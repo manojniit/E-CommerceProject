@@ -1,30 +1,27 @@
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>addproduct page</title>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta charset="utf-8">
+  <title>header page</title>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <style>
-   body {
 
-background-image:url("http://mediaimages.boxedart.com/CorrespondingSpacially550-1.jpg");
-background-repeat: no-repeat;
-   background-size: cover;
-    background-attachment: fixed;
-}
+
+Try it Yourself »
+
+.carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 70%;
+      margin: auto;
 </style>
+
 </head>
 <body>
+
 <nav class="navbar navbar-fixed-top" >
 <nav class = "navbar bg-primary">
   <div class="container-fluid">
@@ -91,30 +88,12 @@ background-repeat: no-repeat;
 <ul class="nav navbar-nav navbar-right">
 
 
-	<li><a href="#" style="color:white"><span class="glyphicon glyphicon-log-in"></span> Add To Cart</a></li>
-		<li><a href="viewproduct" style="color:white"><span class="glyphicon glyphicon-log-in"></span> ViewProduct</a></li>
-	
-      <li><a href="logout" style="color:white"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-	  <li><a href="#" style="color:white"><span class="glyphicon glyphicon-log-in"></span> help</a></li>
+<li><a href="#" style="color:white"><span class="glyphicon glyphicon-log-in"></span> Add To Cart</a></li>
+<li><a href="register" style="color:white"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+<li><a href="login" style="color:white"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+<li><a href="#" style="color:white"><span class="glyphicon glyphicon-log-in"></span> help</a></li>
      
     </ul>
 
   </div>
 </nav>
-
-<center><form:form action="addTheProduct" commandName="pro" method="post" enctype="multipart/form-data">
-<div class="container">
-		<div class="account_grid">
-			   <div class=" login-right">
-			   <h1 style="color:green">Add The Product</h1>
-
-<h3><span style="color:black">Name:</span></h3>
-<form:input path="name"/><br>
-<h3><span style="color:black">Brand:</span></h3>
-<form:input path="brand"/><br>
-<h3><span style="color:black">Price</span></h3>
-<form:input path="price"/><br>
-<h3><span style="color:black">Add Product Image:</span></h3>
-<input type="file" name="file"/><br>
-<input type="submit" value="submit"/>
-</form:form> </center>

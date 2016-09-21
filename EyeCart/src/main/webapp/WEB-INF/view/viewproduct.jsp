@@ -1,12 +1,10 @@
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>addproduct page</title>
+<title>viewproduct page</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +15,7 @@
 <style>
    body {
 
-background-image:url("http://mediaimages.boxedart.com/CorrespondingSpacially550-1.jpg");
+background-image:url("http://cdn.pcwallart.com/images/plain-blue-background-wallpaper-4.jpg");
 background-repeat: no-repeat;
    background-size: cover;
     background-attachment: fixed;
@@ -91,30 +89,51 @@ background-repeat: no-repeat;
 <ul class="nav navbar-nav navbar-right">
 
 
-	<li><a href="#" style="color:white"><span class="glyphicon glyphicon-log-in"></span> Add To Cart</a></li>
-		<li><a href="viewproduct" style="color:white"><span class="glyphicon glyphicon-log-in"></span> ViewProduct</a></li>
-	
-      <li><a href="logout" style="color:white"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-	  <li><a href="#" style="color:white"><span class="glyphicon glyphicon-log-in"></span> help</a></li>
+<li><a href="#" style="color:white"><span class="glyphicon glyphicon-log-in"></span> Add To Cart</a></li>
+<li><a href="logout" style="color:white"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
+<li><a href="addProduct" style="color:white"><span class="glyphicon glyphicon-log-in"></span>Add The Product</a></li>
      
     </ul>
 
   </div>
 </nav>
 
-<center><form:form action="addTheProduct" commandName="pro" method="post" enctype="multipart/form-data">
 <div class="container">
-		<div class="account_grid">
-			   <div class=" login-right">
-			   <h1 style="color:green">Add The Product</h1>
-
-<h3><span style="color:black">Name:</span></h3>
-<form:input path="name"/><br>
-<h3><span style="color:black">Brand:</span></h3>
-<form:input path="brand"/><br>
-<h3><span style="color:black">Price</span></h3>
-<form:input path="price"/><br>
-<h3><span style="color:black">Add Product Image:</span></h3>
-<input type="file" name="file"/><br>
-<input type="submit" value="submit"/>
-</form:form> </center>
+					  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <div ng-app="myApp" ng-controller="dataCtrl">
+  
+Enter Product Name:  <input type="text"  ng-model="search">&nbsp&nbsp<span class="glyphicon glyphicon-search"></span>
+    <hr></hr>
+    <table class="table table-striped">
+    <tr>
+    <th>ProductId</th>
+    <th>Name</th>
+    <th>Brand</th>
+    <th>Price</th>
+    <th>Product Image</th>
+    </tr>
+        <tr ng-repeat="resource in names | filter:search">
+             <td>{{resource.productId}}</td>
+            <td>{{ resource.name}}</td>
+            <td>{{ resource.brand}}</td>
+            <td>{{ resource.price}}</td>
+            <td><img src="resources/images/{{resource.productId}}.jpg" style="width: 200px;height:150px"></td>
+            <td><a href="deleteProduct?id={{resource.productId}}">Delete</a></td>
+            <td><a href="editItem?id={{resource.productId}}">Edit</a></td>
+        </tr>    
+    </table>
+</div>
+<script>
+angular.module('myApp',[]).controller('dataCtrl',function($scope)
+		{
+	
+		$scope.names=${json};
+		$scope.orderByMe=function(x)
+		{
+			$scope.myOrderBy=x;
+			}
+		});
+</script>
+</div>
+</nav>
+</body>

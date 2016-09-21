@@ -6,21 +6,34 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class Register {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
-	private int id;
+	@Column(name="userid")
+	private int userid;
+	@NotEmpty(message="username should not be empty")
 	private String username;
+	@NotEmpty(message="password should not be empty")
 	private String password;
+	@NotEmpty(message="emailId should not be empty")
 	private String emailId;
-	
-	public int getId() {
-		return id;
+	public boolean isEnabled() {
+		return enabled;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+	
+	private boolean enabled;
+	
+	public int getUserid() {
+		return userid;
+	}
+	public void setUserid(int userid) {
+		this.userid = userid;
 	}
 	public String getUsername() {
 		return username;

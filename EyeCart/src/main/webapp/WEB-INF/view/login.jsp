@@ -1,30 +1,31 @@
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<title>addproduct page</title>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <style>
-   body {
 
-background-image:url("http://mediaimages.boxedart.com/CorrespondingSpacially550-1.jpg");
-background-repeat: no-repeat;
-   background-size: cover;
-    background-attachment: fixed;
+
+body {
+    background-image: url("http://rlcmarketing.info/wp-content/uploads/2014/02/img05.jpg");
+background-size: cover;
+    background-repeat: no-repeat;
 }
+
+Try it Yourself »
+
+.carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 70%;
+      margin: auto;
 </style>
+
 </head>
 <body>
+
 <nav class="navbar navbar-fixed-top" >
 <nav class = "navbar bg-primary">
   <div class="container-fluid">
@@ -91,30 +92,42 @@ background-repeat: no-repeat;
 <ul class="nav navbar-nav navbar-right">
 
 
-	<li><a href="#" style="color:white"><span class="glyphicon glyphicon-log-in"></span> Add To Cart</a></li>
-		<li><a href="viewproduct" style="color:white"><span class="glyphicon glyphicon-log-in"></span> ViewProduct</a></li>
-	
-      <li><a href="logout" style="color:white"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-	  <li><a href="#" style="color:white"><span class="glyphicon glyphicon-log-in"></span> help</a></li>
+<li><a href="#" style="color:white"><span class="glyphicon glyphicon-log-in"></span> Add To Cart</a></li>
+<li><a href="register" style="color:white"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+<li><a href="index" style="color:white"><span class="glyphicon glyphicon-log-in"></span>Home</a></li>
+<li><a href="#" style="color:white"><span class="glyphicon glyphicon-log-in"></span>help</a></li>
      
     </ul>
 
   </div>
 </nav>
 
-<center><form:form action="addTheProduct" commandName="pro" method="post" enctype="multipart/form-data">
+
+<center><body>
 <div class="container">
 		<div class="account_grid">
 			   <div class=" login-right">
-			   <h1 style="color:green">Add The Product</h1>
+			  	<h3>REGISTERED CUSTOMERS</h3>
+				<p>If you have an account with us, please log in.</p>
+				<c:if test="${SPRING_SECURITY_LAST_EXCEPTION !=null}">
+<div>
+<center>Your login attempt was not successful, try again!!
+caused:${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</center>
+</div>
+</c:if>
+				
+				<form name="f" action="<c:url value='j_spring_security_check'/>" method='POST'>
+				  <div>
+					<h3><span style="color:white">User Name</span></h3>
+					<input type="text" name='j_username'  placeholder="UserName Required"  required="required" > 
+				  </div><br>
+				  <div>
+					<h3><span style="color:white">Password</span></h3>
+					<input type="password" name='j_password' placeholder="Password Required"  required="required" > 
+				  </div><br>
+				  
+				 <h4> <input type="submit" value="Login" ></h4>
+			    </form>
+			   </div>	
+					</div></div></body>   </center>
 
-<h3><span style="color:black">Name:</span></h3>
-<form:input path="name"/><br>
-<h3><span style="color:black">Brand:</span></h3>
-<form:input path="brand"/><br>
-<h3><span style="color:black">Price</span></h3>
-<form:input path="price"/><br>
-<h3><span style="color:black">Add Product Image:</span></h3>
-<input type="file" name="file"/><br>
-<input type="submit" value="submit"/>
-</form:form> </center>

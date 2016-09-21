@@ -1,12 +1,10 @@
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>addproduct page</title>
+<title>logout page</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +15,7 @@
 <style>
    body {
 
-background-image:url("http://mediaimages.boxedart.com/CorrespondingSpacially550-1.jpg");
+background-image:url("rahul.jpg");
 background-repeat: no-repeat;
    background-size: cover;
     background-attachment: fixed;
@@ -92,9 +90,8 @@ background-repeat: no-repeat;
 
 
 	<li><a href="#" style="color:white"><span class="glyphicon glyphicon-log-in"></span> Add To Cart</a></li>
-		<li><a href="viewproduct" style="color:white"><span class="glyphicon glyphicon-log-in"></span> ViewProduct</a></li>
-	
-      <li><a href="logout" style="color:white"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      <li><a href="register" style="color:white"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="login" style="color:white"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 	  <li><a href="#" style="color:white"><span class="glyphicon glyphicon-log-in"></span> help</a></li>
      
     </ul>
@@ -102,19 +99,9 @@ background-repeat: no-repeat;
   </div>
 </nav>
 
-<center><form:form action="addTheProduct" commandName="pro" method="post" enctype="multipart/form-data">
-<div class="container">
-		<div class="account_grid">
-			   <div class=" login-right">
-			   <h1 style="color:green">Add The Product</h1>
-
-<h3><span style="color:black">Name:</span></h3>
-<form:input path="name"/><br>
-<h3><span style="color:black">Brand:</span></h3>
-<form:input path="brand"/><br>
-<h3><span style="color:black">Price</span></h3>
-<form:input path="price"/><br>
-<h3><span style="color:black">Add Product Image:</span></h3>
-<input type="file" name="file"/><br>
-<input type="submit" value="submit"/>
-</form:form> </center>
+<% 
+session.invalidate();
+%>
+<h1>you are successfully logged out.</h1>
+</body>
+</html>

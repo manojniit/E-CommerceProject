@@ -1,7 +1,10 @@
 package com.eye.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,11 +23,11 @@ public class EyeController {
 		System.out.println("index");
 		return "index";
 	}
-	@RequestMapping("/log")
-	public String log()
+	@RequestMapping("/login")
+	public String login()
 	{
-		System.out.println("log");
-		return "log";
+		System.out.println("login");
+		return "login";
 	}
 	@RequestMapping("/register")
 	public ModelAndView register()
@@ -34,11 +37,21 @@ public class EyeController {
 		return new ModelAndView("register","reg",reg);
 	}
 	@RequestMapping("/registerUser")
-	public String registerUser(@ModelAttribute("reg")Register register)
+	public ModelAndView registerUser(@Valid @ModelAttribute("reg")Register register,BindingResult bindingResult)
 	{
+		if(bindingResult.hasErrors())
+		{
+			return new ModelAndView("register");
+		}
 		System.out.println("registerUser");
 		registerDAO.registerUser(register);
-		return "registerUser";
+		return new ModelAndView("register","info","sucessfully registered");
+	}
+	@RequestMapping("/logout")
+	public String logout()
+	{
+		System.out.println("logout");
+		return "logout";
 	}
 
 }

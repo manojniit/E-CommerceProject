@@ -1,5 +1,7 @@
 package com.eye.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -16,6 +18,22 @@ public class ProductDAOImpl implements ProductDAO{
 		Session session=sessionFactory.getCurrentSession();
 		Transaction transaction=session.beginTransaction();
 		session.save(product);
+		transaction.commit();
+	}
+	public List<Product> viewProducts() {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.getCurrentSession();
+		Transaction transaction=session.beginTransaction();
+		List<Product> products=session.createCriteria(Product.class).list();
+		transaction.commit(); 
+		return products;
+	}
+	public void deleteProductById(int id) {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.getCurrentSession();
+		Transaction transaction=session.beginTransaction();
+		Product prod=session.get(Product.class,new Integer(id));
+		session.delete(prod);
 		transaction.commit();
 	}
 
