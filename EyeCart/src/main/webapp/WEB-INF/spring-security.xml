@@ -13,12 +13,13 @@
 	<intercept-url pattern="/addproduct" access="ROLE_ADMIN"/>
 	<form-login  login-page="/login"  default-target-url="/addproduct"/>
 	<logout logout-success-url="/logout"/>
+	
 	</http>
 	 <authentication-manager>
 	<authentication-provider>
 	<jdbc-user-service data-source-ref="dataSource" 
-	 users-by-username-query="select username,password,enabled from register where username=?" 
-	authorities-by-username-query="select u1.username, u2.authority from register u1, userrole u2 where u1.userid= u2.uid and u1.username =?" />
+	 users-by-username-query="select username,password,enabled from signup where username=?" 
+	authorities-by-username-query="select u1.username, u2.authority from signup u1, userrole u2 where u1.userId= u2.uid and u1.username =?" />
 	</authentication-provider>
 	</authentication-manager>
 	
